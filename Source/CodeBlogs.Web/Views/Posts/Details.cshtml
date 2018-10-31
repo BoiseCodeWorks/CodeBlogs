@@ -1,0 +1,40 @@
+﻿@using CodeBlogs.Entities;
+@model CodeBlogs.Entities.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+    </dl>
+</div>
+
+<div class="comments">
+
+    <partial name="CreateComment" model="new Comment(){ PostId = Model.Id }" />
+
+    <partial name="Comments" model="Model.Comments" />
+
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
